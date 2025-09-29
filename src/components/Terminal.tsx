@@ -16,6 +16,7 @@ Available commands:
   <span class="terminal-green">education</span>  - Check my educational background
   <span class="terminal-green">awards</span>     - See hackathon wins and achievements
   <span class="terminal-green">contact</span>    - Get my contact information
+  <span class="terminal-green">resume</span>     - Download/view my resume (PDF)
   <span class="terminal-green">clear</span>      - Clear the terminal
   <span class="terminal-green">help</span>       - Show this help message
   `,
@@ -212,6 +213,23 @@ export const Terminal = () => {
     
     if (trimmedCmd === "clear") {
       setHistory([]);
+      return;
+    }
+
+    if (trimmedCmd === "resume") {
+      window.open("/Resume_Sajad_Hussain.pdf", "_blank");
+      setHistory((prev) => [
+        ...prev,
+        {
+          command: cmd,
+          output: (
+            <span className="terminal-green">
+              ✓ Opening resume in new tab...
+            </span>
+          ),
+        },
+      ]);
+      setInput("");
       return;
     }
 
