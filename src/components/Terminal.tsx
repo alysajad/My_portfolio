@@ -180,20 +180,27 @@ export const Terminal = () => {
       command: "",
       output: (
         <div className="mb-4">
-          <pre className="text-foreground mb-2">
+          <pre className="terminal-green text-glow mb-3 text-xs md:text-sm">
 {`
- ███████╗ █████╗      ██╗ █████╗ ██████╗ 
- ██╔════╝██╔══██╗     ██║██╔══██╗██╔══██╗
- ███████╗███████║     ██║███████║██║  ██║
- ╚════██║██╔══██║██   ██║██╔══██║██║  ██║
- ███████║██║  ██║╚█████╔╝██║  ██║██████╔╝
- ╚══════╝╚═╝  ╚═╝ ╚════╝ ╚═╝  ╚═╝╚═════╝ 
+   ██████╗██╗   ██╗██████╗ ███████╗██████╗ ███████╗███████╗ ██████╗
+  ██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗██╔════╝██╔════╝██╔════╝
+  ██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝███████╗█████╗  ██║     
+  ██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗╚════██║██╔══╝  ██║     
+  ╚██████╗   ██║   ██████╔╝███████╗██║  ██║███████║███████╗╚██████╗
+   ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝
 `}
           </pre>
-          <p className="text-muted-foreground mb-2">Welcome to my portfolio terminal!</p>
-          <p className="text-muted-foreground">
-            Type <span className="terminal-green">help</span> to see available commands.
-          </p>
+          <div className="space-y-2">
+            <p className="terminal-cyan text-glow">
+              ┌─[<span className="terminal-yellow">SAJAD HUSSAIN MALLA</span>]─[<span className="terminal-green">Tech Lead | Cybersecurity Specialist</span>]
+            </p>
+            <p className="terminal-blue">
+              │ Access granted. Welcome to the portfolio terminal.
+            </p>
+            <p className="terminal-green">
+              └─$ Type <span className="terminal-yellow font-bold">help</span> to view available commands
+            </p>
+          </div>
         </div>
       ),
     },
@@ -264,41 +271,70 @@ export const Terminal = () => {
 
   return (
     <div
-      ref={terminalRef}
-      className="min-h-screen bg-background text-foreground p-4 md:p-8 font-mono overflow-y-auto"
+      className="min-h-screen bg-background text-foreground p-2 md:p-4 font-mono overflow-y-auto relative"
+      style={{ zIndex: 2 }}
       onClick={() => inputRef.current?.focus()}
     >
-      <div className="max-w-4xl mx-auto">
-        {history.map((item, index) => (
-          <div key={index} className="mb-4">
-            {item.command && (
-              <div className="flex items-center gap-2 mb-2">
-                <span className="terminal-prompt">sajad@portfolio</span>
-                <span className="text-muted-foreground">:</span>
-                <span className="terminal-blue">~</span>
-                <span className="text-foreground">$ {item.command}</span>
-              </div>
-            )}
-            {item.output && <div className="ml-0 text-foreground">{item.output}</div>}
+      <div className="max-w-5xl mx-auto">
+        <div className="terminal-window rounded-none md:rounded-sm overflow-hidden">
+          {/* Terminal Header */}
+          <div className="terminal-header">
+            <div className="terminal-button red"></div>
+            <div className="terminal-button yellow"></div>
+            <div className="terminal-button green"></div>
+            <span className="text-xs terminal-green ml-2 opacity-70">
+              sajad@cybersec-portfolio: ~
+            </span>
           </div>
-        ))}
 
-        <div className="flex items-center gap-2">
-          <span className="terminal-prompt">sajad@portfolio</span>
-          <span className="text-muted-foreground">:</span>
-          <span className="terminal-blue">~</span>
-          <span className="text-foreground">$</span>
-          <input
-            ref={inputRef}
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent border-none outline-none text-foreground font-mono"
-            autoFocus
-            spellCheck={false}
-          />
-          <span className="blink">▊</span>
+          {/* Terminal Content */}
+          <div
+            ref={terminalRef}
+            className="p-4 md:p-6 min-h-[calc(100vh-8rem)] overflow-y-auto"
+          >
+            {history.map((item, index) => (
+              <div key={index} className="mb-4">
+                {item.command && (
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="terminal-prompt font-bold">sajad@cybersec</span>
+                    <span className="text-muted-foreground">:</span>
+                    <span className="terminal-purple font-bold">~</span>
+                    <span className="terminal-green">$</span>
+                    <span className="text-foreground ml-1">{item.command}</span>
+                  </div>
+                )}
+                {item.output && <div className="ml-0 text-foreground">{item.output}</div>}
+              </div>
+            ))}
+
+            <div className="flex items-center gap-2">
+              <span className="terminal-prompt font-bold">sajad@cybersec</span>
+              <span className="text-muted-foreground">:</span>
+              <span className="terminal-purple font-bold">~</span>
+              <span className="terminal-green">$</span>
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="flex-1 bg-transparent border-none outline-none text-foreground font-mono ml-1 caret-terminal-green"
+                autoFocus
+                spellCheck={false}
+                placeholder="Type 'help' for commands..."
+              />
+              <span className="blink terminal-green">█</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Command Hints */}
+        <div className="mt-4 text-center text-xs command-suggestion">
+          <span className="terminal-green">Tip:</span> Try commands like{" "}
+          <span className="terminal-blue">about</span>,{" "}
+          <span className="terminal-blue">skills</span>,{" "}
+          <span className="terminal-blue">projects</span>, or{" "}
+          <span className="terminal-blue">resume</span>
         </div>
       </div>
     </div>

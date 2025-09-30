@@ -8,41 +8,43 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 13% 13%;
-    --foreground: 60 30% 96%;
+    --background: 0 0% 5%;
+    --foreground: 120 100% 85%;
 
-    --card: 220 13% 16%;
-    --card-foreground: 60 30% 96%;
+    --card: 0 0% 8%;
+    --card-foreground: 120 100% 85%;
 
-    --popover: 220 13% 16%;
-    --popover-foreground: 60 30% 96%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 120 100% 85%;
 
-    --primary: 280 100% 70%;
-    --primary-foreground: 60 30% 96%;
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 5%;
 
-    --secondary: 220 13% 20%;
-    --secondary-foreground: 60 30% 96%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 120 100% 85%;
 
-    --muted: 220 13% 20%;
-    --muted-foreground: 60 9% 65%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 120 60% 50%;
 
-    --accent: 173 80% 40%;
-    --accent-foreground: 60 30% 96%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 0 0% 5%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 60 30% 96%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 120 100% 85%;
 
-    --border: 220 13% 25%;
-    --input: 220 13% 20%;
-    --ring: 280 100% 70%;
+    --border: 120 100% 20%;
+    --input: 0 0% 10%;
+    --ring: 120 100% 50%;
 
-    --radius: 0.25rem;
+    --radius: 0rem;
 
-    /* Terminal theme tokens */
-    --terminal-green: 173 80% 40%;
-    --terminal-blue: 217 92% 76%;
-    --terminal-yellow: 41 100% 70%;
-    --terminal-red: 0 84% 60%;
+    /* Hacker Terminal theme tokens */
+    --terminal-green: 120 100% 60%;
+    --terminal-blue: 180 100% 60%;
+    --terminal-yellow: 60 100% 60%;
+    --terminal-red: 0 100% 60%;
+    --terminal-purple: 280 100% 60%;
+    --terminal-cyan: 180 100% 50%;
   }
 }
 
@@ -54,6 +56,43 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 0, 0.03) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 3px
+      );
+    pointer-events: none;
+    z-index: 1;
+    animation: scanline 8s linear infinite;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
   }
 
   html {
@@ -63,19 +102,87 @@ All colors MUST be HSL.
 
 @layer utilities {
   .terminal-prompt {
-    color: hsl(var(--primary));
+    color: hsl(var(--terminal-cyan));
+    text-shadow: 0 0 5px hsl(var(--terminal-cyan) / 0.5);
   }
   
   .terminal-green {
     color: hsl(var(--terminal-green));
+    text-shadow: 0 0 5px hsl(var(--terminal-green) / 0.3);
   }
   
   .terminal-blue {
     color: hsl(var(--terminal-blue));
+    text-shadow: 0 0 5px hsl(var(--terminal-blue) / 0.3);
   }
   
   .terminal-yellow {
     color: hsl(var(--terminal-yellow));
+    text-shadow: 0 0 5px hsl(var(--terminal-yellow) / 0.3);
+  }
+
+  .terminal-purple {
+    color: hsl(var(--terminal-purple));
+    text-shadow: 0 0 5px hsl(var(--terminal-purple) / 0.3);
+  }
+
+  .terminal-window {
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid hsl(var(--terminal-green) / 0.3);
+    box-shadow: 
+      0 0 20px rgba(0, 255, 0, 0.1),
+      inset 0 0 100px rgba(0, 255, 0, 0.02);
+    position: relative;
+  }
+
+  .terminal-window::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 0, 0.05) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(0, 255, 0, 0.05) 3px
+      );
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  .terminal-header {
+    background: rgba(0, 255, 0, 0.05);
+    border-bottom: 1px solid hsl(var(--terminal-green) / 0.3);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+  }
+
+  .terminal-button.red {
+    background: #ff5f56;
+    box-shadow: 0 0 5px rgba(255, 95, 86, 0.5);
+  }
+
+  .terminal-button.yellow {
+    background: #ffbd2e;
+    box-shadow: 0 0 5px rgba(255, 189, 46, 0.5);
+  }
+
+  .terminal-button.green {
+    background: #27c93f;
+    box-shadow: 0 0 5px rgba(39, 201, 63, 0.5);
   }
 
   .blink {
@@ -91,12 +198,33 @@ All colors MUST be HSL.
     }
   }
 
-  @keyframes typewriter {
-    from {
-      width: 0;
+  @keyframes scanline {
+    0% {
+      transform: translateY(0);
     }
-    to {
-      width: 100%;
+    100% {
+      transform: translateY(100%);
     }
+  }
+
+  @keyframes flicker {
+    0% {
+      opacity: 0.95;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.95;
+    }
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  .command-suggestion {
+    color: hsl(var(--muted-foreground));
+    opacity: 0.5;
   }
 }
