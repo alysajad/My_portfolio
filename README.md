@@ -39,7 +39,7 @@ This website is built as my digital portfolio, designed for easy navigation and 
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/alysajad/cv-display-hero.git
+   git clone https://github.com/alysajad/My_portfolio
    cd cv-display-hero
    ```
 
