@@ -1,73 +1,75 @@
-# Welcome to your Lovable project
+# my portfolio
 
-## Project info
+Welcome to my personal portfolio website!  
+This project showcases my professional background, technical skills, and featured projects in a clean, modern, and responsive interface.
 
-**URL**: https://lovable.dev/projects/01500bef-bc16-446f-8f87-3b662822f925
+---]
+##Check it here 
+https://alisajadhussain.netlify.app/
 
-## How can I edit this code?
+## About the Project
 
-There are several ways of editing your application.
+This website is built as my digital portfolio, designed for easy navigation and fast performance using modern web technologies.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/01500bef-bc16-446f-8f87-3b662822f925) and start prompting.
+## Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **React** (with Vite) — Modern JavaScript UI framework
+- **TypeScript** — Type-safe development for reliability
+- **shadcn-ui** — Elegant, accessible UI components
+- **Tailwind CSS** — Utility-first CSS for rapid, responsive design
+- **TanStack Query** — Data fetching and state management
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Routes
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- `/` — Home (main portfolio page)
+- Any other route — Custom 404 Not Found page
 
-Follow these steps:
+*More routes and content may be added as my portfolio grows.*
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Installation & Running Locally
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/alysajad/cv-display-hero.git
+   cd cv-display-hero
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
 
-**Edit a file directly in GitHub**
+3. **Start the development server:**
+   ```sh
+   npm run dev
+   ```
+   The app will be running at [http://localhost:5173](http://localhost:5173).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## Deployment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+You can deploy this project to platforms like Vercel, Netlify, or your preferred static host.
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## Customization
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Feel free to fork this project and adapt it for your own portfolio or resume site!
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/01500bef-bc16-446f-8f87-3b662822f925) and click on Share -> Publish.
+## Contact
 
-## Can I connect a custom domain to my Lovable project?
+Want to connect or collaborate?  
+Reach out via the contact info on the homepage or open an issue in this repository.
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Thank you for visiting!
