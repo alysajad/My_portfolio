@@ -182,12 +182,12 @@ export const Terminal = () => {
         <div className="mb-6">
           <pre className="terminal-cyan text-glow mb-4 text-xs md:text-sm leading-tight">
 {`
-   ██████╗██╗   ██╗██████╗ ███████╗██████╗     ███████╗███████╗ ██████╗
-  ██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗    ██╔════╝██╔════╝██╔════╝
-  ██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝    ███████╗█████╗  ██║     
-  ██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗    ╚════██║██╔══╝  ██║     
-  ╚██████╗   ██║   ██████╔╝███████╗██║  ██║    ███████║███████╗╚██████╗
-   ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝    ╚══════╝╚══════╝ ╚═════╝
+   ███████╗ █████╗      ██╗ █████╗ ████████╗
+   ██╔════╝██╔══██╗     ██║██╔══██╗██╔══██║
+   ███████╗███████║     ██║███████║██║  ██║
+   ╚════██║██╔══██║██   ██║██╔══██║██║  ██║
+   ███████║██║  ██║╚█████╔╝██║  ██║████████║
+   ╚══════╝╚═╝  ╚═╝ ╚════╝ ╚═╝  ╚═╝╚═══════╝
 `}
           </pre>
           <div className="space-y-2 border-l-2 border-terminal-cyan pl-4 py-2">
@@ -196,9 +196,6 @@ export const Terminal = () => {
             </p>
             <p className="terminal-green">
               <span className="terminal-pink font-bold">█</span> USER: <span className="terminal-yellow font-bold">SAJAD HUSSAIN MALLA</span>
-            </p>
-            <p className="terminal-blue">
-              <span className="terminal-pink font-bold">█</span> ROLE: <span className="terminal-purple">Tech Lead | Cybersecurity Specialist</span>
             </p>
             <p className="terminal-yellow mt-4">
               <span className="terminal-pink font-bold">▶</span> Type <span className="terminal-cyan font-bold">'help'</span> to view available commands
